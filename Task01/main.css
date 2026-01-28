@@ -1,0 +1,44 @@
+ul {
+    list-style: none;
+    display: flex;
+}
+
+nav {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+
+}
+
+a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    margin: 2px;
+}
+
+nav > div > h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: x-large;
+    font-weight: 1000;
+}
+
+main {
+    display: flex;
+    height: 75vh;
+    padding: 5px;
+    margin: 5px;
+}
+
+#index-page {
+    
+}
+
+#project-page {
+    
+}
+
