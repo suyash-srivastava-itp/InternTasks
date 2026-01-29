@@ -7,18 +7,24 @@ nav {
     padding: 5px;
     display: flex;
     justify-content: space-between;
+    border-bottom-style:solid;
 }
 
 footer {
     display: flex;
     justify-content: center;
-
+    border-top-style: dashed;
 }
 
 a {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
     margin: 2px;
+}
+img {
+    height: 50vh;
+    width: 35vh;
+    margin: 10px;
 }
 
 nav > div > h2 {
@@ -34,11 +40,20 @@ main {
     margin: 5px;
 }
 
-#index-page {
-    
+article {
+    max-width: 50vw;
 }
 
-#project-page {
-    
+form {
+    display: flex;
+    flex-direction: column;
 }
 
+#blogs-page {
+    justify-content: space-between;
+}
+
+#contact-page {
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
