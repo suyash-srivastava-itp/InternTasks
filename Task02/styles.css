@@ -1,0 +1,35 @@
+@media screen {
+    main {
+    background-color: yellow;
+    height: 70vh;
+}
+
+header {
+    display: flex;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+
+}
+
+#logo {
+    display: flex;
+}
+
+}
+
+
+@media screen and (min-width : 768px) {
+    main {
+        background-color: aqua;
+    }
+}
