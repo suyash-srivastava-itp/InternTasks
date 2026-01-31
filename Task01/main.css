@@ -1,6 +1,22 @@
-ul {
+body {
+    margin: 0;
+    padding: 0;
+}
+nav > ul {
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
     list-style: none;
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+nav > ul > li {
+    margin-right: 2px;
+    margin-left: 2px;
 }
 
 nav {
@@ -9,51 +25,82 @@ nav {
     justify-content: space-between;
     border-bottom-style:solid;
 }
-
 footer {
     display: flex;
     justify-content: center;
     border-top-style: dashed;
 }
-
 a {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
+    color: black;
     margin: 2px;
+
 }
 img {
-    height: 50vh;
-    width: 35vh;
     margin: 10px;
 }
-
 nav > div > h2 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: x-large;
     font-weight: 1000;
 }
-
 main {
     display: flex;
     height: 75vh;
     padding: 5px;
     margin: 5px;
 }
-
 article {
     max-width: 50vw;
 }
-
 form {
+    margin: 5px;
+    padding: 2px;
     display: flex;
     flex-direction: column;
 }
+.project {
+    margin: 5px;
+    height: max-content;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    border: 2px;
+}
 
+.background {
+    background-image: linear-gradient(
+        to right,
+        rgb(230, 235, 163, 0.5),
+        rgb(219, 230, 60, 0.5))
+}
+#project-page {
+    justify-content: space-evenly;
+    align-items: center;
+}
 #blogs-page {
     justify-content: space-between;
 }
-
 #contact-page {
-    align-items: flex-start;
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: center;
+}
+
+#contact-box {
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#socials {
+    max-width: max-content;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+#socials > li {
+    padding: 2px;
+    margin: 2px;
 }
