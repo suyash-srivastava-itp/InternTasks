@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="./main.css" />
   </head>
   <body class="background">
-    <nav>
+    <nav role="navigation">
       <div><h2>Suyash Srivastava</h2></div>
-      <ul>
+      <ul role="link">
         <li><a href="./index.html">Home</a></li>
         <li><a href="./projects.html">Projects</a></li>
         <li><a href="./contact.html">Contact</a></li>
@@ -21,15 +21,16 @@
         <h2>Contact Me</h2>
       <form>
         <label> Name </label>
-        <input type="text" />
+        <input aria-labelledby="Name" type="text" />
         <label> Email </label>
-        <input type="email" />
+        <input aria-labelledby="email" type="email" />
         <label> Message </label>
-        <input type="text" />
+        <input aria-labelledby="Message" type="text" />
+        <button aria-disabled="true">submit</button>
       </form>
       </div>
     </main>
-    <footer>
+    <footer role="doc-footnote">
       <p>All Rights Reserved @ 2025</p>
     </footer>
   </body>

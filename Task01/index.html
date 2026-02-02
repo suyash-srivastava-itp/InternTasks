@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Semantic Web Test</title>
-    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./main.css"  />
   </head>
   <body class="background">
-    <nav>
+    <nav role="navigation">
       <div><h2>Suyash Srivastava</h2></div>
-      <ul>
+      <ul role="list">
         <li><a href="./index.html" role="link">Home</a></li>
         <li><a href="./projects.html" role="link">Projects</a></li>
         <li><a href="./contact.html" role="link">Contact</a></li>
@@ -19,7 +19,7 @@
     <main id="index-page">
       <div>
         <img
-          src="./Image.jpg"
+          src="./download.png"
           height="300rem"
           width="200rem"
           alt="Boy Image"
@@ -28,7 +28,7 @@
         />
       </div>
       <section>
-        <h1>Welcome to my HOMEPAGE</h1>
+        <h1 role="heading">Welcome to my HOMEPAGE</h1>
         <p aria-label="Introduction Paragraph">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam tempora
           pariatur accusantium at culpa repudiandae ipsum commodi dolor non
@@ -38,9 +38,9 @@
           commodi quae quam ducimus quos. Dolorem, architecto blanditiis. Vel
           minus inventore itaque.
         </p>
-        <ul id="socials">
+        <ul id="socials" aria-details="Links to social accounts">
           <li>
-            <a href="https://github.com" target="_blank"
+            <a href="https://github.com" target="_blank" role="link" aria-label="github link"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -55,7 +55,7 @@
             ></a>
           </li>
           <li>
-            <a href="http://x.com" target="_blank"
+            <a href="http://x.com" target="_blank" role="link" aria-label="X link"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -70,7 +70,7 @@
             ></a>
           </li>
           <li>
-            <a href="https://linkedin.com" target="_blank"
+            <a href="https://linkedin.com" target="_blank" role="link" aria-label="LinkedIn link"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"

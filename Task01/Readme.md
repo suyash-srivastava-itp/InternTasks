@@ -36,6 +36,9 @@ task01
 └── README.md      # Documentation for the project
 ```
 
+## Lighthouse score
+![alt text](image.png)
+
 ## Author
 
 Suyash Srivastava
