@@ -1,14 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <title>Simple Quiz App</title>
-</head>
-<body>
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-</body>
+    <style>
+    </style>
+  </head>
+
+  <body class="p-0 m-0 bg-gradient-to-bl from-[#567ad6] to-[#8ea2fa]">
+    <main
+      class="min-h-screen min-w-screen flex items-center justify-center p-4"
+    >
+      <div id="question-box" class="border-b-6 border-solid border-blue-700 rounded-xl shadow-xl bg-blue-300 p-4 flex flex-col items-center justify-center min-h-75 h-full w-lg">
+        <h2 id="question" class="font-serif font-bold text-3xl text-center m-4 p-2"></h2>
+        <div id="answers" class="flex flex-col gap-2 m-2 p-2"></div>
+        <div id="btns">
+          <button
+          id="prev-button"
+            class="bg-blue-500 hover:bg-blue-400 cursor-pointer text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          >
+            Prev
+          </button>
+          <button
+          id="next-button"
+            class="bg-blue-500 hover:bg-blue-400 cursor-pointer  text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <script src="./index.js"></script>
+    </main>
+  </body>
 </html>
