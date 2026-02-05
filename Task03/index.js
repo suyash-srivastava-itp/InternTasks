@@ -84,8 +84,10 @@ const questionArray = [
 // init variables
 const MAX_COUNT = 10;
 let currentCount = 0;
+let score = 0;
 let quizStarted = false;
 let selectedOptionArray = [];
+let timer, interval;
 
 const question = document.querySelector("#question");
 const answers = document.querySelector("#answers");
@@ -98,8 +100,7 @@ startButton.setAttribute(
   "class",
   "text-3xl text-white bg-red-500 font-bold font-mono border-b-4 border-r-2 border-red-700 py-2 px-4 rounded-lg hover:bg-red-400 cursor-pointer",
 );
-startButton.addEventListener("click", startQuizHandler)
-
+startButton.addEventListener("click", startQuizHandler);
 
 //quiz submit button
 let submitButton = document.createElement("button");
@@ -113,10 +114,24 @@ submitButton.addEventListener("click", submitQuizHandler);
 
 document.getElementById("btns").appendChild(submitButton);
 
+// final score vis.
+let finalScoreDiv = document.createElement("div");
+finalScoreDiv.setAttribute("id", "final-score");
+finalScoreDiv.setAttribute(
+  "class",
+  "text-3xl text-white border-b-2 border-green-600 bg-green-500 font-mono rounded-lg p-4",
+);
+
+// timer 
+let timerHeading = document.createElement("h2");
+timerHeading.setAttribute("id", "timer");
+timerHeading.setAttribute("class", "p-2 mx-2 text-white absolute top-4 right-2 bg-blue-500 rounded-lg")
+
 // next button onclick event
 document.getElementById("next-button").addEventListener("click", () => {
   if (currentCount < MAX_COUNT - 1) {
     currentCount++;
+    startQuestionTimer();
     displayQuestion();
   }
 });
@@ -124,15 +139,17 @@ document.getElementById("next-button").addEventListener("click", () => {
 document.getElementById("prev-button").addEventListener("click", () => {
   if (currentCount > 0) {
     currentCount--;
+    startQuestionTimer();
     displayQuestion();
   }
 });
-
 
 // start button onclick handler
 function startQuizHandler() {
   // console.log("quiz started");
   quizStarted = true;
+
+  startQuestionTimer();
 
   document.getElementById("question").classList.remove("hidden");
   document.getElementById("answers").classList.remove("hidden");
@@ -147,19 +164,74 @@ function startQuizHandler() {
 
 // submit button onclick handler
 function submitQuizHandler() {
-  console.log("submit");
+  for (i = 0; i < MAX_COUNT; i++) {
+    if (
+      selectedOptionArray[i] &&
+      selectedOptionArray[i] === questionArray[i].correctOption
+    )
+      score++;
+  }
+  document.getElementById("question-box").innerHTML = "";
+  // document.getElementById("question-box").children
+  finalScoreDiv.innerText = `Final Score : ${score}`;
+
+  document.getElementById("question-box").appendChild(finalScoreDiv);
+
+  if(timer) clearTimeout(timer);
+  if(interval) clearInterval(interval);
 }
 
 function selectOptionHandler(id) {
-  document.getElementById(id).classList.add("bg-yellow-700");
+  // console.log(id);
+  let selectedOption = document.getElementById(id);
+  if (!selectedOption) return;
+
+  if (selectedOption.classList.contains("selected")) {
+    selectedOption.classList.remove("selected");
+    selectedOption.classList.replace("bg-yellow-600", "bg-yellow-100");
+    document.querySelectorAll(".btn").forEach((element) => {
+      if (element.id != id) {
+        element.disabled = false;
+        element.classList.add("cursor-pointer");
+      }
+    });
+  } else {
+    selectedOption.classList.add("selected");
+    selectedOption.classList.add("bg-yellow-600");
+    selectedOption.classList.remove("hover:bg-yellow-200");
+    selectedOptionArray[currentCount] = document.getElementById(id).innerText;
+    console.log(selectedOptionArray);
+
+    document.querySelectorAll(".btn").forEach((element) => {
+      if (element.id != id) {
+        element.disabled = true;
+        element.classList.remove("cursor-pointer");
+      }
+    });
+  }
 }
 
-function optionSelectionStateSaver() {
+const startQuestionTimer = () => {
+  let clock = 59;
+  if (timer) {
+    clearTimeout(timer);
+    clearInterval(interval);
+    console.log("timer cleared");
+  }
 
-}
+  console.log("new timer started");
 
+  timer = setTimeout(() => {
+    clearInterval(interval);
+    alert("Time up");
+  }, 60000);
 
-
+  interval = setInterval(() => {
+    // console.log(clock--);
+    timerHeading.innerText = clock--;
+    document.getElementById("question-box").appendChild(timerHeading);
+  }, 1000);
+};
 
 // display each question
 const displayQuestion = () => {
@@ -170,14 +242,16 @@ const displayQuestion = () => {
     let id = 0;
     questionArray[currentCount].options.forEach((element) => {
       // console.log(element);
-      let option = document.createElement("div");
-      option.setAttribute("id", `option-${id++}`)
+      let option = document.createElement("button");
+      option.setAttribute("id", `option-${id++}`);
       option.setAttribute(
         "class",
-        `border-2 border-blue-500 rounded p-2 bg-yellow-100 hover:bg-yellow-200 font-mono cursor-pointer`,
+        `btn border-2 border-blue-500 rounded p-2 bg-yellow-100 hover:bg-yellow-200 font-mono cursor-pointer`,
       );
       option.innerText = element;
-      option.addEventListener("click", () => selectOptionHandler(option.getAttribute("id")));
+      option.addEventListener("click", () =>
+        selectOptionHandler(option.getAttribute("id")),
+      );
       answers.append(option);
     });
   }
@@ -187,7 +261,7 @@ const displayQuestion = () => {
     document.getElementById("prev-button").classList.remove("hidden");
   }
 
-  if(currentCount === MAX_COUNT -1) {
+  if (currentCount === MAX_COUNT - 1) {
     document.getElementById("submit-button").classList.remove("hidden");
     document.getElementById("next-button").classList.add("hidden");
   } else {
@@ -195,7 +269,6 @@ const displayQuestion = () => {
     document.getElementById("next-button").classList.remove("hidden");
   }
 };
-
 
 //render the start button only
 (() => {
