@@ -1,0 +1,129 @@
+{
+  "questions": [
+    {
+      "question": "What does CPU stand for?",
+      "options": ["a. Central Processing Unit", "b. Computer Personal Unit", "c. Central Performance Utility", "d. Control Processing User"],
+      "correct option": "a. Central Processing Unit"
+    },
+    {
+      "question": "Which language is primarily used for web page styling?",
+      "options": ["a. HTML", "b. JavaScript", "c. CSS", "d. Python"],
+      "correct option": "c. CSS"
+    },
+    {
+      "question": "What does RAM stand for?",
+      "options": ["a. Read Access Memory", "b. Random Access Memory", "c. Rapid Action Module", "d. Run Access Machine"],
+      "correct option": "b. Random Access Memory"
+    },
+    {
+      "question": "Which company developed the Android operating system?",
+      "options": ["a. Apple", "b. Microsoft", "c. Google", "d. IBM"],
+      "correct option": "c. Google"
+    },
+    {
+      "question": "What does HTTP stand for?",
+      "options": ["a. HyperText Transfer Protocol", "b. HighText Transmission Program", "c. Hyper Transfer Text Process", "d. Host Transfer Protocol"],
+      "correct option": "a. HyperText Transfer Protocol"
+    },
+    {
+      "question": "Which of the following is a NoSQL database?",
+      "options": ["a. MySQL", "b. PostgreSQL", "c. MongoDB", "d. Oracle"],
+      "correct option": "c. MongoDB"
+    },
+    {
+      "question": "What is the main purpose of an operating system?",
+      "options": ["a. Run antivirus", "b. Manage hardware and software resources", "c. Edit documents", "d. Browse the internet"],
+      "correct option": "b. Manage hardware and software resources"
+    },
+    {
+      "question": "Which programming language is known for its use in data science?",
+      "options": ["a. Python", "b. PHP", "c. C", "d. Assembly"],
+      "correct option": "a. Python"
+    },
+    {
+      "question": "What does GPU stand for?",
+      "options": ["a. General Processing Unit", "b. Graphical Performance Utility", "c. Graphics Processing Unit", "d. Graphic Power Unit"],
+      "correct option": "c. Graphics Processing Unit"
+    },
+    {
+      "question": "Which protocol is used to send emails?",
+      "options": ["a. FTP", "b. SMTP", "c. HTTP", "d. SNMP"],
+      "correct option": "b. SMTP"
+    },
+    {
+      "question": "What does IoT stand for?",
+      "options": ["a. Internet of Technology", "b. Integration of Tools", "c. Internet of Things", "d. Interface of Technology"],
+      "correct option": "c. Internet of Things"
+    },
+    {
+      "question": "Which company created the Windows OS?",
+      "options": ["a. Google", "b. Apple", "c. Microsoft", "d. Intel"],
+      "correct option": "c. Microsoft"
+    },
+    {
+      "question": "What is Git primarily used for?",
+      "options": ["a. Graphic design", "b. Version control", "c. Database management", "d. Network security"],
+      "correct option": "b. Version control"
+    },
+    {
+      "question": "Which tag is used to define a hyperlink in HTML?",
+      "options": ["a. <link>", "b. <a>", "c. <href>", "d. <url>"],
+      "correct option": "b. <a>"
+    },
+    {
+      "question": "What does API stand for?",
+      "options": ["a. Application Programming Interface", "b. Advanced Program Interaction", "c. Applied Protocol Interface", "d. Application Process Integration"],
+      "correct option": "a. Application Programming Interface"
+    },
+    {
+      "question": "Which one is a cloud computing service?",
+      "options": ["a. AWS", "b. Windows XP", "c. Bluetooth", "d. HDMI"],
+      "correct option": "a. AWS"
+    },
+    {
+      "question": "What is the binary equivalent of decimal 2?",
+      "options": ["a. 10", "b. 01", "c. 11", "d. 100"],
+      "correct option": "a. 10"
+    },
+    {
+      "question": "Which device is used to route data between networks?",
+      "options": ["a. Switch", "b. Hub", "c. Router", "d. Modem"],
+      "correct option": "c. Router"
+    },
+    {
+      "question": "What does SQL stand for?",
+      "options": ["a. Structured Query Language", "b. Simple Query Language", "c. Sequential Query Logic", "d. System Query Layer"],
+      "correct option": "a. Structured Query Language"
+    },
+    {
+      "question": "Which OS is open-source?",
+      "options": ["a. Windows", "b. macOS", "c. Linux", "d. iOS"],
+      "correct option": "c. Linux"
+    },
+    {
+      "question": "What is the purpose of a firewall?",
+      "options": ["a. Increase internet speed", "b. Protect against unauthorized access", "c. Store data", "d. Manage passwords"],
+      "correct option": "b. Protect against unauthorized access"
+    },
+    {
+      "question": "Which language is mainly used for Android app development?",
+      "options": ["a. Swift", "b. Kotlin", "c. Ruby", "d. JavaScript"],
+      "correct option": "b. Kotlin"
+    },
+    {
+      "question": "What does DNS do?",
+      "options": ["a. Encrypts data", "b. Stores files", "c. Translates domain names to IP addresses", "d. Blocks malware"],
+      "correct option": "c. Translates domain names to IP addresses"
+    },
+    {
+      "question": "Which one is a frontend JavaScript framework?",
+      "options": ["a. Django", "b. Flask", "c. React", "d. Laravel"],
+      "correct option": "c. React"
+    },
+    {
+      "question": "What is the full form of AI?",
+      "options": ["a. Automated Interface", "b. Artificial Intelligence", "c. Advanced Internet", "d. Applied Informatics"],
+      "correct option": "b. Artificial Intelligence"
+    }
+  ]
+}

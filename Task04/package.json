@@ -1,0 +1,21 @@
+{
+  "name": "task04",
+  "version": "1.0.0",
+  "description": "Modularised quiz app",
+  "license": "ISC",
+  "author": "Suyash Srivastava",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "dev": "npx ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.1",
+    "prettier": "3.8.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
