@@ -1,0 +1,3 @@
+- Constructors cannot be asynchronous
+- Singleton class /Static factory methods
+- iife

@@ -13,9 +13,12 @@
   },
   "devDependencies": {
     "@types/node": "^25.2.1",
+    "jest": "^30.2.0",
     "prettier": "3.8.1",
     "ts-node": "^10.9.2",
-    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "eta": "^4.5.1"
   }
 }
