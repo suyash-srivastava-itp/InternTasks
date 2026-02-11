@@ -1,0 +1,5 @@
+<div id="question-box" class="border-b-6 relative border-solid border-blue-700 rounded-xl shadow-xl bg-blue-300 p-4 flex flex-col items-center justify-center min-h-75 h-full w-lg">
+    <button id="start-button" class= "text-3xl text-white bg-red-500 font-bold font-mono border-b-4 border-r-2 border-red-700 py-2 px-4 rounded-lg hover:bg-red-400 cursor-pointer">
+      Start Quiz
+    </button> 
+</div>

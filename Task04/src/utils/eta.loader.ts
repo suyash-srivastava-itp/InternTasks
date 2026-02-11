@@ -8,7 +8,7 @@ export default class EtaLoader {
 
   private constructor() {
     this.eta = new Eta({
-      views: path.join(import.meta.dirname, '/view'),
+      views: path.join(import.meta.dirname, '../view'),
     });
   }
 

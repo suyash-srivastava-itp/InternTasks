@@ -13,7 +13,18 @@
       }
     </style>
   </head>
-  <body>
-    <%~ include("./partials/question", it)%>
+  <body class="p-0 m-0 bg-gradient-to-bl from-[#567ad6] to-[#8ea2fa]">
+  <main class="min-h-screen min-w-screen flex items-center justify-center p-4">
+    <% if (it.route === "/next") { %>
+  <%~ include("./partials/question", it) %>
+<% } else if (it.route === "/") { %>
+  <%~ include("./partials/start", it) %>
+<% } %>
+
+    </main>
+    <script>
+    console.log("Scripted");
+  </script>
   </body>
+  
 </html>

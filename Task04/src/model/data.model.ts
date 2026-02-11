@@ -15,7 +15,7 @@ export default class QuestionProvider {
     if (QuestionProvider.provider) return QuestionProvider.provider;
 
     let arr: QuestionArray;
-    arr = JSON.parse(readFileSync('./question.json', 'utf-8')).questions;
+    arr = JSON.parse(readFileSync('./questions.json', 'utf-8')).questions;
     QuestionProvider.provider = new QuestionProvider(arr);
 
     return QuestionProvider.provider;

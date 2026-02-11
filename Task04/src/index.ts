@@ -4,6 +4,8 @@ import { createServer, IncomingMessage, ServerResponse } from 'node:http';
 import QuizController from './controller/quiz.controller.ts';
 
 const PORT: number = 3000;
+const MAX_QUESTION_COUNT : number = 10;
+
 
 const server = createServer(
   (req: IncomingMessage, res: ServerResponse): void => {

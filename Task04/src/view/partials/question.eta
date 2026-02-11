@@ -10,7 +10,9 @@
         </h2>
         <div id="answers" class="flex flex-col gap-2 m-2 p-2">
             <%it.options.forEach(function (option) {%>
+            <button class="btn border-2 border-blue-500 rounded p-2 bg-yellow-100 hover:bg-yellow-200 font-mono cursor-pointer">
             <%=option%>
+            </button>
             <% })%>
         </div>
         <div id="btns">
