@@ -19,12 +19,71 @@
   <%~ include("./partials/question", it) %>
 <% } else if (it.route === "/") { %>
   <%~ include("./partials/start", it) %>
+  <% } else if (it.route === "/end") { %>
+  <%~ include("./partials/end", it) %>
 <% } %>
 
     </main>
     <script>
-    console.log("Scripted");
-  </script>
+  let timeLeft = 60;
+  let timerInterval;
+
+  function startTimer() {
+    const timerDisplay = document.getElementById("timer");
+    if (!timerDisplay) return; 
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      timerDisplay.innerText = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        window.location.href = "/end";
+      }
+    }, 1000);
+  }
+
+  // Stop timer when answer selected
+  function stopTimer() {
+    clearInterval(timerInterval);
+  }
+
+  // Modify your selectedOption function slightly:
+  function selectedOption(e) {
+    stopTimer(); 
+
+    const buttons = document.querySelectorAll("#answers button");
+    const selectedBtn = e.target;
+    const correctAnswer = "<%= it.correctOption %>";
+
+    let score = parseInt(localStorage.getItem("score")) || 0;
+
+    if (selectedBtn.innerText.trim() === correctAnswer) {
+      selectedBtn.classList.replace("bg-yellow-100", "bg-green-500");
+      score++;
+      localStorage.setItem("score", score);
+    } else {
+      selectedBtn.classList.replace("bg-yellow-100", "bg-red-500");
+
+      buttons.forEach(btn => {
+        if (btn.innerText.trim() === correctAnswer) {
+          btn.classList.replace("bg-yellow-100", "bg-green-500");
+        }
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.disabled = true;
+      btn.classList.remove("hover:bg-yellow-200", "cursor-pointer");
+      btn.classList.add("cursor-not-allowed", "opacity-70");
+    });
+  }
+
+  window.onload = function () {
+    startTimer();
+  };
+</script>
+
   </body>
   
 </html>

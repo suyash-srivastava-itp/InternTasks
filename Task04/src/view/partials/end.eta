@@ -1,0 +1,10 @@
+<div class="border-solid border-b-6 border-blue-700 rounded-xl shadow-xl bg-blue-300 p-8 text-center p-8">
+  <h2 class="text-3xl font-bold mb-4 font-serif text-white">Thank You!</h2>
+
+  <p id="final-score" class="text-xl mb-6"></p>
+
+  <a href="/"
+     class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded-lg border-b-4 border-green-700">
+     Restart Quiz
+  </a>
+</div>

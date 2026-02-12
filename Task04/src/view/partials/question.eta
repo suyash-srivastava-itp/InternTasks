@@ -1,32 +1,23 @@
-<div
-        id="question-box"
-        class="border-b-6 relative border-solid border-blue-700 rounded-xl shadow-xl bg-blue-300 p-4 flex flex-col items-center justify-center min-h-75 h-full w-lg"
-      >
-        <h2
-          id="question"
-          class="font-serif font-bold text-3xl text-center m-4 p-2"
-        >
-        <%=it.question%>
-        </h2>
-        <div id="answers" class="flex flex-col gap-2 m-2 p-2">
-            <%it.options.forEach(function (option) {%>
-            <button class="btn border-2 border-blue-500 rounded p-2 bg-yellow-100 hover:bg-yellow-200 font-mono cursor-pointer">
-            <%=option%>
-            </button>
-            <% })%>
-        </div>
-        <div id="btns">
-          <button
-            id="prev-button"
-            class="bg-blue-500 hover:bg-blue-400 cursor-pointer text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-          >
-            Prev
+<div id="question-box" class="border-b-6 relative border-solid border-blue-700 rounded-xl shadow-xl bg-blue-300 p-4 flex flex-col items-center justify-center min-h-75 h-full w-lg">
+    
+    <div id="timer" 
+         class="absolute top-3 right-4 text-lg font-bold text-white bg-blue-600 px-3 py-1 rounded">
+      60
+    </div>
+    
+    <h2 id="question" class="font-serif font-bold text-3xl text-center m-4 p-2">
+      <%=it.question%>
+    </h2>
+    <div id="answers" class="flex flex-col gap-2 m-2 p-2">
+        <%it.options.forEach(function (option, idx) {%>
+          <button id="opt-<%= idx %>" class="btn border-2 border-blue-500 rounded p-2 bg-yellow-100 hover:bg-yellow-200 font-mono cursor-pointer" onClick="selectedOption(event)">
+          <%=option%>
           </button>
-          <button
-            id="next-button"
-            class="bg-blue-500 hover:bg-blue-400 cursor-pointer text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-          >
+        <% })%>
+    </div>
+    <div>
+        <a href ="/next" id="next" class="bg-blue-500 hover:bg-blue-400 cursor-pointer text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
             Next
-          </button>
-        </div>
-      </div>
+        </a>
+    </div>
+</div>
