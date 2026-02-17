@@ -10,6 +10,6 @@
 
 ## Month 2 
 
-- Deliverable 1 : Promises/fetch -> OpenWeatherMap API app
-- Deliverable 2 : LocalStorage/Debouncing -> Movie Search app
-- Deliverable 3 : DS/functional pattern TS -> ToDo app with filters, unit tests etc. 
+- Deliverable 1 : Promises/fetch -> OpenWeatherMap API app with loading/error states
+- Deliverable 2 : LocalStorage/debouncing/throttling -> (Movie search app with debounced search(waiting until user finishes typing or similar technique) + pagination)
+- Deliverable 3 : DS/functional pattern TS -> To-Do app with filters, persistence, unit tests 

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main class="h-full w-full align-items-center justify-center">
+      <section id="main-sec">
+          
+      </section>
+    </main>
+    <script>
+      function fetchWeatherData() {
+        let city = "paris";
+        const url = `http://localhost:3000/currweather?city=${city}`;
+        fetch(url, {
+          method: "GET",
+        }).then((val) => console.log(val))
+      }
+
+      fetchWeatherData();
+    </script>
+  </body>
+</html>
