@@ -1,0 +1,24 @@
+{
+  "name": "task06",
+  "version": "1.0.0",
+  "description": "Movie app",
+  "license": "ISC",
+  "author": "Suyash Srivastava",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "private": "true",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "express": "^5.2.1",
+    "winston": "^3.19.0"
+  }
+}

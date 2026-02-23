@@ -1,7 +1,7 @@
 personal-todo.md
 
 node_modules
-
+logs
 
 *.sqlite
 *.sqlite3
