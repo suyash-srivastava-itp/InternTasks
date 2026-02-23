@@ -1,19 +1,17 @@
 const BASE_URL: string = "https://api.imdbapi.dev";
-let MOVIE_ARRAY: [{}] | null = null;
+
+
+let MOVIE_ARRAY : [{}];
 
 async function populateMovieArray() {
-  try {
-    let res = await fetch(`${BASE_URL}/titles`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    let data = await res.json();
-    MOVIE_ARRAY = data.titles;
-  } catch (err: any) {
-    throw new Error(err.message ?? "Error populating Array");
-  }
+  let res = await fetch(`${BASE_URL}/titles`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let data = await res.json();
+  MOVIE_ARRAY = data.titles;
 }
 
 export async function getTitle(title: string) {
@@ -29,6 +27,9 @@ export async function getTitle(title: string) {
   return data.titles[0];
 }
 
-export  function getTitleList(start: number = 0, end: number = 10) {
-  return MOVIE_ARRAY?.slice(start, end);
+export async function getTitleList(start: number = 0, end: number = 10) {
+  await populateMovieArray();
+
+
+  return MOVIE_ARRAY.slice(start,end);
 }

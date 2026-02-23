@@ -15,10 +15,11 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
-  "private": "true",
   "dependencies": {
     "@types/express": "^5.0.6",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "winston": "^3.19.0"
-  }
+  },
+  "private": "true"
 }
