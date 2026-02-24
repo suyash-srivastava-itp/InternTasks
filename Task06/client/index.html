@@ -1,66 +1,205 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie search app</title>
-  </head>
-  <body>
-    <main>
-      <div>
-        <button onclick="fetchAllMovies(1)">Watch latest top 50</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Search App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+
+    <!-- Header -->
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">
+      🎬 Movie Search App
+    </h1>
+
+    <!-- Controls -->
+    <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
+
+      <button
+        onclick="loadFirstPage()"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition"
+      >
+        Watch Latest Top 50
+      </button>
+
+      <div class="flex gap-2 w-full md:w-auto">
+        <input
+          type="text"
+          id="search-box"
+          placeholder="Enter movie name..."
+          onkeyup="debounceInput()"
+          class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        <button
+          onclick="ThrottleAPIcall()"
+          class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition"
+        >
+          Search
+        </button>
       </div>
-      <div>
-        <input type="text" id="search-box" placeholder="Enter movie name" onkeydown="debounceInput()"/>
-        <button onclick="ThrottleAPIcall()">Search</button>
-      </div>
-    </main>
 
-    <script>
-      function fetchMovie() {
-        const movieName = document.getElementById("search-box").value.trim();
+    </div>
 
-        console.log(movieName);
+    <!-- Results -->
+    <div id="results" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
 
-        if (movieName) {
-          const data = {
-            title: movieName,
-          };
+    <!-- Pagination -->
+    <div id="pagination" class="flex items-center justify-center gap-6 mt-10 hidden">
 
-          fetch("http://localhost:3000/api/titles", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(data),
-          })
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .catch((err) => console.log(err));
-        }
+      <button
+        id="prev-btn"
+        onclick="changePage(-1)"
+        class="px-4 py-2 bg-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Previous
+      </button>
+
+      <span id="page-number" class="font-semibold text-gray-700">
+        Page 1
+      </span>
+
+      <button
+        id="next-btn"
+        onclick="changePage(1)"
+        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Next
+      </button>
+
+    </div>
+
+  </main>
+
+  <script>
+    let debounceTimer;
+    let throttleTimer = null;
+    let currentPage = 1;
+
+    function renderMovies(data) {
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+
+      if (!data) {
+        resultsDiv.innerHTML =
+          "<p class='text-gray-500 text-center col-span-full'>No results found</p>";
+        return;
       }
 
-      function fetchAllMovies(page) {
-        fetch(`http://localhost:3000/api/list?page=${page}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        });
-      }
+      const movies = Array.isArray(data) ? data : [data];
 
-      function debounceInput() {
-        let timer;
-        clearTimeout(timer); 
-        timer = setTimeout(fetchMovie, 2000);
-        
-      }
+      movies.forEach((movie) => {
+        const card = document.createElement("div");
+        card.className =
+          "bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col";
 
-      function ThrottleAPIcall() {
-        let time = 200;
-      }
-    </script>
-  </body>
+        card.innerHTML = `
+          <img 
+            src="${movie.primaryImage?.url || 'https://via.placeholder.com/300x450'}"
+            alt="${movie.primaryTitle}"
+            class="w-full h-80 object-cover"
+          />
+
+          <div class="p-4 flex flex-col gap-2">
+            <h2 class="text-xl font-bold text-gray-800">
+              ${movie.primaryTitle || "Untitled"}
+            </h2>
+
+            <p class="text-sm text-gray-500">
+              ${(movie.type || "").toUpperCase()}
+              ${movie.startYear ? " • " + movie.startYear : ""}
+            </p>
+
+            ${
+              movie.rating
+                ? `
+              <p class="text-yellow-600 font-semibold">
+                ⭐ ${movie.rating.aggregateRating || "N/A"}
+                <span class="text-gray-500 text-sm">
+                  (${movie.rating.voteCount?.toLocaleString() || 0} votes)
+                </span>
+              </p>
+            `
+                : ""
+            }
+          </div>
+        `;
+
+        resultsDiv.appendChild(card);
+      });
+    }
+
+    function fetchAllMovies(page = 1) {
+      currentPage = page;
+
+      fetch(`http://localhost:3000/api/list?page=${currentPage}`)
+        .then((res) => res.json())
+        .then((data) => {
+          renderMovies(data);
+
+          document.getElementById("pagination").classList.remove("hidden");
+          document.getElementById("page-number").innerText =
+            "Page " + currentPage;
+
+          document.getElementById("prev-btn").disabled = currentPage === 1;
+          document.getElementById("next-btn").disabled = !data || data.length === 0;
+
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        })
+        .catch((err) => console.log(err));
+    }
+
+    function loadFirstPage() {
+      document.getElementById("search-box").value = "";
+      fetchAllMovies(1);
+    }
+
+    function changePage(direction) {
+      if (direction === -1 && currentPage === 1) return;
+      currentPage += direction;
+      fetchAllMovies(currentPage);
+    }
+
+    function fetchMovie() {
+      const movieName = document
+        .getElementById("search-box")
+        .value.trim();
+
+      if (!movieName) return;
+
+      fetch("http://localhost:3000/api/titles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title: movieName }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          renderMovies(data);
+          document.getElementById("pagination").classList.add("hidden");
+        })
+        .catch((err) => console.log(err));
+    }
+
+    function debounceInput() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(fetchMovie, 800);
+    }
+
+    function ThrottleAPIcall() {
+      if (throttleTimer) return;
+
+      fetchMovie();
+
+      throttleTimer = setTimeout(() => {
+        throttleTimer = null;
+      }, 2000);
+    }
+  </script>
+
+</body>
 </html>
