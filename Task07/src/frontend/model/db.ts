@@ -10,7 +10,7 @@ export class TodoDB extends Dexie {
         super('TodoDB');
         this.version(1).stores({
             todoLists: "++id",
-            todoItems: "++id, todoListId"
+            todoItems: "++id, todoListId,done"
         });
     }
 }
